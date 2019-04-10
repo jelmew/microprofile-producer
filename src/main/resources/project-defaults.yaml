@@ -1,0 +1,15 @@
+thorntail:
+  deployment:
+    microprofile-producer.war:
+      jaxrs:
+        application-path: "/"
+  jaeger:
+    service-name: microprofile-producer
+    sampler-type: const
+    sampler-parameter: 1
+    agent-host: jaeger-agent
+    agent-port: 6832
+    reporter-log-spans: true
+    reporter-flush-interval : 500
+    enable-b3-header-propagation: true
+    remote-reporter-http-endpoint: 'http://jaeger-collector:14268/api/traces'
